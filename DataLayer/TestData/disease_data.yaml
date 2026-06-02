@@ -1,0 +1,39 @@
+disease_add_data:
+  - case_name: "新增疾病-高血压"
+    disease_abb: "GXY"
+    disease_name: "高血压"
+    parent_abb: "True"
+    eng_name: "Hypertension"
+    abbreviation: ""
+    other_name: ""
+    disease_coding: "True"
+    run: false
+
+  - case_name: "新增疾病-糖尿病"
+    disease_abb: "TNB"
+    disease_name: "糖尿病"
+    parent_abb: "True"
+    eng_name: "Diabetes"
+    abbreviation: ""
+    other_name: ""
+    disease_coding: "True"
+    run: false
+
+  - case_name: "新增疾病-冠心病"
+    disease_abb: "GXZ"
+    disease_name: "冠心病"
+    parent_abb: "True"
+    eng_name: "Coronary Heart Disease"
+    abbreviation: "CHD"
+    other_name: "冠状动脉粥样硬化性心脏病"
+    disease_coding: "False"
+    run: false # 新增数据
+
+search_data:
+  - case_name: "搜索疾病-高血压"
+    disease_name: "高血压"
+    run: true
+
+  - case_name: "搜索疾病-糖尿病"
+    disease_name: "糖尿病"
+    run: false

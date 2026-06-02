@@ -1,0 +1,54 @@
+# YAML 本身不支持直接存储 Python 的元组类型，所以配置里的 fp_page: (By.LINK_TEXT, "忘记密码") 本质是字符串（Python 读取后会识别为字符串，而非元组）。
+
+
+# 成功登录数据
+success_login:
+  username: "li"
+  password: "1234qwer"
+  expected_title: "URAN"
+
+# 异常登录数据（参数化用例）
+invalid_credentials:
+  - username: ""
+    password: "1234qwer"
+    expected_msg: ["请输入用户名"]
+  - username: "hu1"
+    password: ""
+    expected_msg: ["请输入密码"]
+  - username: ""
+    password: ""
+    expected_msg: ["请输入用户名", "请输入密码"]
+  - username: "hu1"
+    password: "当前目录层级说明"
+    expected_msg: ["用户名或密码错误，请重新输入"]
+  - username: "hu123"
+    password: "1234"
+    expected_msg: ["用户名不存在，请重新输入"]
+  - username: "gu"
+    password: "1234qwer"
+    expected_msg: ["您的账号已被停用，请联系管理员"]
+
+
+effective_datas:
+  pateintname: "张"
+  hospitalizationnumber: "7041633"
+  outpatientnumber: "44"
+
+invalid_datas:
+  pateintname: "上官"
+  hospitalizationnumber: "bbb"
+  outpatientnumber: "aa"
+
+
+
+normal_inpatient_registration_elements:
+
+
+abnormal_inpatient_registration_elements:
+
+locatelementext:
+  personalsetings : "账号与安全"
+
+#通过字典的类型存放住院记录填写区域元素的定位和输入值
+patient_data:
+  (By.XPATH, "//input[@placeholder = '请输入患者姓名']") : "张"

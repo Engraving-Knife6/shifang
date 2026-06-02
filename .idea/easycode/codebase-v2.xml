@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="com.obiscr.chatgpt.settings.EasyCodeState">
+    <option name="projectFiles" value="$PROJECT_DIR$/BasicLayer/base_page.py;D:/python_projects/shihang/BasicLayer/GoogleConfige.py;D:/python_projects/shihang/BusinessLayer/disease_business.py;D:/python_projects/shihang/BusinessLayer/login_business.py;D:/python_projects/shihang/BusinessLayer/page_redirection_business.py;D:/python_projects/shihang/Common/Fixtures/disasesubtype.py;D:/python_projects/shihang/Common/Fixtures/handle.py;D:/python_projects/shihang/Common/Utils/data_reader.py;D:/python_projects/shihang/Common/Utils/data_reader_new.py;D:/python_projects/shihang/DataLayer/ElementLocatorData/disease_element.py;D:/python_projects/shihang/DataLayer/ElementLocatorData/page_locators.py;D:/python_projects/shihang/DataLayer/TestData/disease_data.yaml;D:/python_projects/shihang/DataLayer/TestData/test_data.yaml;D:/python_projects/shihang/FunctionLayer/disease_function.py;D:/python_projects/shihang/FunctionLayer/login_fuction.py;D:/python_projects/shihang/UseCaseLayer/test_disease.py;D:/python_projects/shihang/UseCaseLayer/test_login.py;D:/python_projects/shihang/UseCaseLayer/test_page_redirection.py;D:/python_projects/shihang/conftest.py;D:/python_projects/shihang/main.py" />
+  </component>
+</project>
