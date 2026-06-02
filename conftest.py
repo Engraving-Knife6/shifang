@@ -7,15 +7,15 @@ import sys
 from FunctionLayer.login_fuction import LoginFunction
 from Common.Utils.data_reader import read_login_data
 from BusinessLayer.login_business import LoginBusiness
-from  Common.Fixtures.disasesubtype import homep_disase
-from  Common.Fixtures.handle import orginal_handle
+from Common.Fixtures.disasesubtype import homep_disase
+from Common.Fixtures.handle import orginal_handle
 
 # 获取当前工作空间根目录（Jenkins 工作空间路径）
 root_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))  # 根据脚本层级调整
 sys.path.append(root_dir)
 
 # 验证路径是否生效
-print("python模块搜索路径", sys.path)
+# print("python模块搜索路径", sys.path)
 
 """使用 scope="function" 的 Fixture将 browser 和 init_login_page 的 scope 设置为 function，这样每个测试用例都会有独立的浏览器实例和登录页实例。
 function实现每个测试类单独执行,session实现所有测试类在一个会话（浏览器）中执行"""
@@ -28,6 +28,16 @@ def browser():
     #chromedriver_path = r"D:\ChromeDriver\chromedriver-win64_145\chromedriver-win64\chromedriver.exe"
     #service = Service(executable_path=chromedriver_path)
     #driver = webdriver.Chrome(service=service, options=option)
+    """
+    方式一：
+    自动访问谷歌官网下载对应驱动（需要外网）
+    方式二：
+    以下任意一种都可以：
+    放在 系统环境变量 PATH 里
+    放在 Python 根目录
+    放在 项目 venv\Scripts\ 目录
+    放在 当前运行脚本的同文件夹  
+    """
     driver = webdriver.Chrome(options=option)
 
     driver.delete_all_cookies()
