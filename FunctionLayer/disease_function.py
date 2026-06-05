@@ -1,8 +1,11 @@
 import time
-
 import allure
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
+from Common.Utils.search import Search
+from Common.Utils.match import DataComparator
+
+
 from BasicLayer.base_page import BasePage
 from DataLayer.ElementLocatorData.disease_element import DiseaseElements
 
@@ -12,6 +15,8 @@ class DiseaseFunction:
     def __init__(self, driver):
         self.driver = driver
         self.disease_func = BasePage(driver)
+        self.search = Search(driver)
+        self.datacompartor = DataComparator(driver)
 
     # 新增搜索功能
 
@@ -74,18 +79,23 @@ class DiseaseFunction:
             self.disease_func.click(DiseaseElements.confirm)
 
 
-    def search_disease(self, disease_name: str):
+    def search_disease(self, search_input_locator,disease_name: str, result_locator):
         """
         通过疾病名称进行搜索
         :param disease_name: 要搜索的疾病名称
         """
-        """with allure.step("步骤：输入疾病名称进行搜索"):
-            self.disease_func.send_keys(DiseaseElements.search_input, disease_name)
+        self.search.public_search_function(search_input_locator, disease_name)
+        reulst = self.search.get_first_search_result(result_locator)
+        return reulst
 
-        with allure.step("步骤：点击搜索按钮"):
-            
-        with allure.step("步骤：等待搜索结果加载"):
-            # 等待搜索结果中至少有一条数据
-            self.disease_func.wait.until(
-                lambda d: len(self.disease_func.find_elements(DiseaseElements.search_result)) > 0
-            )"""
+    def insert_match(self):
+        values = self.disease_func.find_elements(DiseaseElements.first_row_cells)
+        print(values)
+        text_valu = [element.text for element in values]
+        print(f"第一行数据为：{text_valu}")
+        # 获取表头
+        #headers = driver.find_elements(By.XPATH, '//thead//tr//th')
+        # 获取首行所有单元格
+        #first_row_cells = driver.find_elements(By.XPATH, '//tbody//tr[1]//td')
+        # 字段-元素映射
+        #field_map = {h.text: cell for h, cell in zip(headers, first_row_cells)}

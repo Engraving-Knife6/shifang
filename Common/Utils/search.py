@@ -39,5 +39,5 @@ class Search:
         )"""
         time.sleep(1)
         result_element = self.search.find_element(result_locator)
-        print(result_element.text)
+        #print(result_element.text)
         return result_element.text

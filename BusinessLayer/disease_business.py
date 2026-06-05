@@ -1,11 +1,9 @@
 from selenium.common import TimeoutException
-
 from FunctionLayer.disease_function import DiseaseFunction
 from DataLayer.ElementLocatorData.disease_element import DiseaseElements
 from BasicLayer.base_page import BasePage
 from Common.Utils.search import Search
 from Common.Utils.match import DataComparator
-
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
@@ -126,13 +124,14 @@ class DiseaseBusiness(BasePage):
         """
         业务层封装搜索功能
         """
-        # self.disease_busi.search_disease(disease_name)
-        self.search.public_search_function(search_input_locator, disease_name)
-        result = self.search.get_first_search_result(result_locator)
+
+        result = self.disease_busi.search_disease(search_input_locator,disease_name, result_locator)
         # result = self.disease_busi.get_first_search_result()
         assert disease_name in result, f"搜索结果中未找到疾病名称 [{disease_name}]"
 
-    def insert_macth(self, list_elements, expected_data= None):
-        actual_data = self.datacompartor.get_first_list_item(list_elements)
-        print(actual_data)
+    #def insert_macth(self, list_elements, expected_data=None):
+    def insert_macth(self):
+        self.disease_busi.insert_match()
+        #actual_data = self.datacompartor.get_first_list_item(list_elements)
+        #print(actual_data)
         #self.datacompartor.compare_data(expected_data, actual_data)

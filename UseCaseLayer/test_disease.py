@@ -59,7 +59,7 @@ class TestDisease:
         business.search_disease_business(DiseaseElements.search_input, disease_name, DiseaseElements.search_result)
         # business.disease_busi.search_disease(disease_name)
         #business.disease_func.search_disease(disease_name)
-
+        business.insert_macth()
         # 获取搜索结果并断言
         """result = business.disease_busi.get_first_search_result()
         assert disease_name in result, f"搜索结果中未找到疾病名称 [{disease_name}]"

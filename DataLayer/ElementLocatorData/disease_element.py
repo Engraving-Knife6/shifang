@@ -36,3 +36,4 @@ class DiseaseElements:
     search_input = (By.XPATH, "//input[@placeholder = '请输入疾病名称']")  # 搜索框定位
     #search_button = (By.XPATH, "//span[text() = '搜索']")  # 搜索按钮定位
     search_result = (By.XPATH, "//div[contains(@class, 'n-data-table')]//td[3]")  # 搜索结果定位（疾病名称在第3列）
+    first_row_cells = (By.XPATH, "//tbody//tr[1]//td[position()>=2 and position()<=8]")
