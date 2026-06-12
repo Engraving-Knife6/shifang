@@ -57,7 +57,7 @@ class DiseaseFunction:
         if disease_name:
             with allure.step("步骤：输入疾病名称"):
                 self.disease_func.send_keys(DiseaseElements.disease_name_value, disease_name)
-        if parent_abb:
+        if parent_abb :  # 有值、不为空、不为 0、不为 False → 成立
             with allure.step("步骤：选择父级简称"):
                 self.disease_func.click(DiseaseElements.parent_abb_value)
                 self.disease_func.click(DiseaseElements.top)
@@ -88,14 +88,24 @@ class DiseaseFunction:
         reulst = self.search.get_first_search_result(result_locator)
         return reulst
 
-    def insert_match(self):
-        values = self.disease_func.find_elements(DiseaseElements.first_row_cells)
-        print(values)
-        text_valu = [element.text for element in values]
-        print(f"第一行数据为：{text_valu}")
-        # 获取表头
-        #headers = driver.find_elements(By.XPATH, '//thead//tr//th')
-        # 获取首行所有单元格
-        #first_row_cells = driver.find_elements(By.XPATH, '//tbody//tr[1]//td')
-        # 字段-元素映射
-        #field_map = {h.text: cell for h, cell in zip(headers, first_row_cells)}
+    def insert_match(self, except_data):
+        # 定义业务字段与页面显示字段的映射
+        FIELD_MAP = {
+            "disease_abb": "疾病简称" ,
+            "disease_name": "疾病名称" ,
+            "parent_abb": "父级简称" ,
+            "eng_name": "英文名称" ,
+            "abbreviation": "缩写" ,
+            "other_name": "其他名称" ,
+            "disease_coding": "ICD编码"
+        }
+        # 获取页面第一行数据
+        dispaly_data = self.datacompartor.get_first_list_item(DiseaseElements.headers, DiseaseElements.first_row_cells)
+        # 调用页面数据与输入数据比较逻辑
+        return self.datacompartor.compare_data(except_data, dispaly_data, FIELD_MAP)
+
+
+
+
+
+

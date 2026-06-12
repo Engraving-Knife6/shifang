@@ -130,8 +130,10 @@ class DiseaseBusiness(BasePage):
         assert disease_name in result, f"搜索结果中未找到疾病名称 [{disease_name}]"
 
     #def insert_macth(self, list_elements, expected_data=None):
-    def insert_macth(self):
-        self.disease_busi.insert_match()
+    def insert_macth(self, except_data):
+        result = self.disease_busi.insert_match(except_data)
+        if result:
+            print("页面输入数据与页面显示数据一致")
         #actual_data = self.datacompartor.get_first_list_item(list_elements)
         #print(actual_data)
         #self.datacompartor.compare_data(expected_data, actual_data)

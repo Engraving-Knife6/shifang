@@ -1,3 +1,5 @@
+import time
+
 import pytest
 import allure
 from BusinessLayer.disease_business import DiseaseBusiness
@@ -38,8 +40,11 @@ class TestDisease:
             other_name = case["other_name"],
             disease_coding = case["disease_coding"]
         )
+        business.insert_macth(case)
 
 
+        # case 是 @pytest.mark.parametrize 动态注入的参数
+        # print(f"当前患者数据为:{case}")
     """def test_add_disease_required(disease_page_fixture):
         business = DiseaseBusiness(disease_page_fixture)
         # 校验必填项为空的场景
@@ -59,10 +64,8 @@ class TestDisease:
         business.search_disease_business(DiseaseElements.search_input, disease_name, DiseaseElements.search_result)
         # business.disease_busi.search_disease(disease_name)
         #business.disease_func.search_disease(disease_name)
-        business.insert_macth()
-        # 获取搜索结果并断言
-        """result = business.disease_busi.get_first_search_result()
-        assert disease_name in result, f"搜索结果中未找到疾病名称 [{disease_name}]"
-"""
+        # business.insert_macth()
+
+
 
 
